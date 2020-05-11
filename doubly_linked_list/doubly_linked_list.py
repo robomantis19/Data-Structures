@@ -29,8 +29,10 @@ class ListNode:
     def delete(self):
         if self.prev:
             self.prev.next = self.next
+            return self.value
         if self.next:
             self.next.prev = self.prev
+            return self.value
 
 
 """Our doubly-linked list class. It holds references to
@@ -48,41 +50,52 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        pass
+        self.length += 1
+        self.head = DoublyLinkedList(value)
+        return self.head
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        pass
+        self.head.delete()
+        
 
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""
     def add_to_tail(self, value):
+        self.tail = value
         pass
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        pass
+        self.tail.delete()
+        
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
-        pass
+        self.head = self.node.value
+        
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
-        pass
+        self.tail = self.node.value
+        
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
-        pass
+        self.node.delete()
         
     """Returns the highest value currently in the list"""
     def get_max(self):
         pass
+
+one = DoublyLinkedList(1)
+one.add_to_head(20)
+print(one.head)
