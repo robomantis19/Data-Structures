@@ -129,10 +129,20 @@ class LinkedList:
             # return the value
             return head.get_value()
         # otherwise we have more than one element in our list
-        value = self.head.get_value()
+        value = self.head.get_value()#
         # set the head reference to the current head's next node in the list
-        self.head = self.head.get_next()
-        return value
+        self.head = self.head.get_next()#
+        return value#
+    def add_to_head(self, value): 
+        new_node = Node(value)
+
+        if not self.head and not self.tail: 
+            self.head = new_node
+            self.tail = new_node
+        else: 
+            new_node.set_next(self.head)
+            self.head = new_node 
+
     def remove_tail(self):
         if not self.head:
             return None
@@ -186,14 +196,18 @@ class LinkedList:
             current = current.get_next()
         return max_value
 
+
+    def print_ll_elements(self): 
+        current = self.head
+        while current is not None: 
+            print(current.value)
+            current = current.get_next()
             
-
-
-
-    
-
-
-
+# ll = LinkedList()
+# ll.add_to_end(3)
+# ll.add_to_end(5)
+# ll.add_to_end(8)
+# ll.print_ll_elements()
 
 
 class Stack:

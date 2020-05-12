@@ -75,11 +75,25 @@ class LinkedList:
             self.tail = None
             return value
         current = self.head
+        #-------------key way we iterate all through list to get head right before tail.
         while current.get_next() is not self.tail:
             current = current.get_next()
         value = self.tail.get_value()
         self.tail = current
         return value
+
+    
+    def add_to_head(self, value): 
+        new_node = Node(value)
+
+        if not self.head and not self.tail: 
+            self.head = new_node
+            self.tail = new_node
+        else: 
+            new_node.set_next(self.head)
+            self.head = new_node
+
+
     def contains(self, value):
         if not self.head:
             return False
@@ -138,3 +152,24 @@ class Queue:
             return None
         self.size -= 1
         return self.storage.remove_head()
+
+
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         return len(self.storage)
+
+#     def enqueue(self, value):
+#         self.size += 1
+#         self.storage.append(value)
+        
+
+#     def dequeue(self):
+#         if len(self.storage) == 0: 
+#             return None
+#         self.size -= 1
+#         return self.storage.pop(0)
+
