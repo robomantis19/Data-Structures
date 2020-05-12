@@ -1,7 +1,7 @@
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
 class ListNode:
-    def __init__(self, value, prev=None, next=None):
+    def __init__(self, value=None, prev=None, next=None):
         self.value = value
         self.prev = prev
         self.next = next
@@ -65,14 +65,22 @@ class DoublyLinkedList:
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""
     def add_to_tail(self, value):
-        self.tail = value
-        pass
-
+        self.length += 1
+        if self.length == 0: 
+            self.tail = DoublyLinkedList(value)
+            return self.tail
+        else: 
+            self.tail = value
+            return self.tail
+    def __str__(self): 
+        return f"tail: {self.tail}"
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        self.tail.delete()
+        
+        tail_val = DoublyLinkedList(self.tail)
+        return self.tail
         
 
     """Removes the input node from its current spot in the 
@@ -96,6 +104,6 @@ class DoublyLinkedList:
     def get_max(self):
         pass
 
-one = DoublyLinkedList(1)
-one.add_to_head(20)
-print(one.head)
+# one = DoublyLinkedList(1)
+# one.add_to_head(20)
+# print(one.head)
